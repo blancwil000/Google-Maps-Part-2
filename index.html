@@ -1,0 +1,56 @@
+<!--Created by: Jay Blanchard
+on January 18, 2018
+-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My Second Google Map</h1>
+
+<select onchange="getMap(this.value)">
+  <option value="canada">Canada</option>
+  <option value="france">France</option>
+  <option value="germany">Germany</option>
+  <option value="austrailia">Austrailia</option>
+</select>
+
+
+<div id="map" style="width:400px;height:400px;"></div>
+
+<script>
+  function myMap(lat, long, zoomed) {
+    if(lat == null){
+      lat = 56.1304;
+      long = -106.3468;
+      zoomed = 5;
+    }
+    var mapCanvas = document.getElementById("map");
+    var mapOptions = {
+      center: new google.maps.LatLng(lat, long), zoom: zoomed
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+  }
+  function getMap(place){
+    if(place == "canada"){
+      myMap(56.1304, -106.3468, 4);
+    }
+    else if(place == "france"){
+      myMap(46.2276, 2.2137, 7);
+    }
+    else if(place == "germany"){
+      myMap(51.1657, 10.4515, 7);
+    }
+    else if(place == "austrailia"){
+      myMap(-25.2744, 133.7751, 5);
+    }
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaMphCOeXsM8l4J1lz-ZPS0mFe1ilpYDo&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</body>
+</html>
